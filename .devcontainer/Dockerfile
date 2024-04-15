@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     sudo \
     git \
-    build-essential git clang cmake libstdc++-12-dev libssl-dev libxxhash-dev zlib1g-dev \
+    mold \
     2>&1 \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
@@ -22,22 +22,10 @@ RUN apt-get update \
     && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME} \
     #
-    #
-    && curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs \
-    #
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
-
-RUN git clone https://github.com/rui314/mold.git \
-    && cd mold \
-    && git checkout v1.1.1 \
-    && make -j$(nproc) \
-    && sudo make install \
-    && cd .. \
-    && rm -rf mold
 
 # rustup component add
 RUN rustup component add clippy \
