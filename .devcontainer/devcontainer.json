@@ -9,20 +9,22 @@
 		"seccomp=unconfined"
 	],
 	"customizations": {
-		"settings": {
-			"lldb.executable": "/usr/bin/lldb",
-			"files.watcherExclude": {
-				"**/target/**": true
+		"vscode": {
+			"settings": {
+				"lldb.executable": "/usr/bin/lldb",
+				"files.watcherExclude": {
+					"**/target/**": true
+				},
+				"rust-analyzer.checkOnSave.command": "clippy"
 			},
-			"rust-analyzer.checkOnSave.command": "clippy"
-		},
-		"extensions": [
-			"vadimcn.vscode-lldb",
-			"mutantdino.resourcemonitor",
-			"tamasfe.even-better-toml",
-			"rust-lang.rust-analyzer",
-			"serayuzgur.crates"
-		]
+			"extensions": [
+				"vadimcn.vscode-lldb",
+				"mutantdino.resourcemonitor",
+				"tamasfe.even-better-toml",
+				"rust-lang.rust-analyzer",
+				"serayuzgur.crates"
+			]
+		}
 	},
 	"remoteUser": "vscode"
 }
